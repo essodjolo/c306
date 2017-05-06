@@ -4,3 +4,4 @@
 * @author kafodome@gmail.com (AFODOME Kwami A.)
 */
 package com.github.sudoku;
+
