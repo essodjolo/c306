@@ -4,7 +4,7 @@ package com.github.sudoku;
  *
  * @author KAHANAM & AFODOME
  */
-public final class Solveur {
+public interface Solveur {
     /**
      * puzzle: le plateau de jeu à résoudre.
      */
