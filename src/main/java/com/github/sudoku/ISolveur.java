@@ -4,7 +4,7 @@ package com.github.sudoku;
  *
  * @author KAHANAM & AFODOME
  */
-public interface Solveur {
+public interface ISolveur {
     /**
      * Teste si le puzzle est un puzzle valide.
      *

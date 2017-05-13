@@ -8,6 +8,7 @@ public final class GrilleImpl implements Grille {
 
     /**
      * sudoku une grille de sudoku 9x9.
+     * 
      */
     private char[][] sudoku;
 
