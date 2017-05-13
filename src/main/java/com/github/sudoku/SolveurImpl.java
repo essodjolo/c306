@@ -104,7 +104,7 @@ public class SolveurImpl implements ISolveur {
 
     public void afficherSolution() {
         try {
-            if (resoudre(grille.getSudoku(), 0, 0)) {
+            if (resolu()) {
                 for (int i = 0; i < 9; ++i) {
                     if (i % 3 == 0) {
                         System.out.println(" -----------------------");
