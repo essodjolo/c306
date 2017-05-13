@@ -9,7 +9,7 @@ import org.junit.Test;
 /**
  * Test de la classe GrilleImpl.java.
  *
- * @author kafodome@gmail.com (AFODOME Kwami A.)
+ * @author kafodome@gmail.com (AFODOME Kwami A.) & Essodjolo KAHANAM
  */
 public final class TestSolveur {
 
