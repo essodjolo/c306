@@ -59,7 +59,6 @@ public class SolveurImpl implements ISolveur {
                     plateau[i][j] = Grille.EMPTY;
                     try {
                         if (!grille.possible(i, j, tempo)) {
-                            System.out.println("(" + i + "," + j + ")");
                             return false;
                         }
                     } catch (IllegalArgumentException e) {

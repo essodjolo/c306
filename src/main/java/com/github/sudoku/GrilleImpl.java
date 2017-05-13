@@ -142,7 +142,8 @@ public class GrilleImpl implements Grille {
                 return true;
             }
         }
-        return false;
+        
+        return value == EMPTY;
     }
 
     /**
