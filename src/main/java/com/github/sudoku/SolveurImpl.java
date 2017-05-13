@@ -18,14 +18,14 @@ public class SolveurImpl implements ISolveur {
     }
 
     /**
-     * constructeur par défaut de la classe.
+     * constructeur par dï¿½faut de la classe.
      *
      */
     public SolveurImpl() {
     }
 
     /**
-     * Accesseur de la propriété grille SolveurImpl.
+     * Accesseur de la propriï¿½tï¿½ grille SolveurImpl.
      *
      * @return GrilleImpl
      */
@@ -34,7 +34,7 @@ public class SolveurImpl implements ISolveur {
     }
 
     /**
-     * Mutateur de la propriété gille.
+     * Mutateur de la propriï¿½tï¿½ gille.
      *
      * @param grille
      */
@@ -43,7 +43,17 @@ public class SolveurImpl implements ISolveur {
     }
 
     public boolean verifierPuzzle() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < getGrille().getDimension(); i++) {
+            for (int j = 0; j < getGrille().getDimension(); i++) {
+                try {
+                    if (! getGrille().possible(i, j, getGrille().getSudoku()[i][j]))
+                        return false;
+                } catch (Exception e) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public boolean resoudre(char[][] cells, int x, int y) throws Exception {
@@ -79,7 +89,20 @@ public class SolveurImpl implements ISolveur {
     }
 
     public void afficherSolution() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < 9; ++i) {
+            if (i % 3 == 0)
+                System.out.println(" -----------------------");
+            for (int j = 0; j < 9; ++j) {
+                if (j % 3 == 0) System.out.print("| ");
+                System.out.print(getGrille().getSudoku()[i][j] == Grille.EMPTY
+                                 ? " "
+                                 : getGrille().getSudoku()[i][j]);
+
+                System.out.print(' ');
+            }
+            System.out.println("|");
+        }
+        System.out.println(" -----------------------");
     }
 
 }
