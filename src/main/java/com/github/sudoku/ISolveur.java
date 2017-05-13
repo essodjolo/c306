@@ -10,7 +10,7 @@ public interface ISolveur {
      *
      * @return boolean
      */
-    public boolean verifierPuzzle();
+    boolean verifierPuzzle();
 
     /**
      * Résoud le puzzle passé en paramètre.
@@ -19,10 +19,10 @@ public interface ISolveur {
      * valable ou si aucune solution n'a pu être calculée
      * @return une grille bien remplie
      */
-    public boolean resoudre();
+    boolean resoudre();
 
     /**
      * Affiche la solution trouvé au puzzle.
      */
-    public void afficherSolution();
+    void afficherSolution();
 }

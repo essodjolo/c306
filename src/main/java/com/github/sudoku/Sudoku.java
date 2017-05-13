@@ -10,9 +10,13 @@ package com.github.sudoku;
  * @author AFK
  */
 public class Sudoku {
-    
-    public static void main(String[] args) {
-        
+
+    /**
+     * Classe main.
+     * @param args les arguments
+     */
+    public static void main(final String[] args) {
+
         char[][] sudokuNonComplete
             = {{'5', '3', '4', '6', '7', '8', '9', '1', '2'},
             {'6', '7', '@', '1', '9', '5', '3', '4', '8'},
@@ -23,7 +27,8 @@ public class Sudoku {
             {'9', '6', '1', '5', '@', '7', '2', '8', '4'},
             {'@', '8', '7', '4', '1', '9', '6', '@', '5'},
             {'3', '4', '5', '2', '8', '6', '1', '7', '9'}};
-        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(sudokuNonComplete));
+        SolveurImpl solveur =
+                new SolveurImpl(new GrilleImpl(sudokuNonComplete));
         solveur.afficherSolution();
     }
 }

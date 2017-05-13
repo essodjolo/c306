@@ -6,20 +6,22 @@ package com.github.sudoku;
  */
 public class SolveurImpl implements ISolveur {
 
+    /**
+     * Une grille de Sudoku.
+     */
     private GrilleImpl grille;
 
     /**
      * constructeur de la classe.
      *
-     * @param grille
+     * @param g GrilleImpl
      */
-    public SolveurImpl(GrilleImpl grille) {
-        this.grille = grille;
+    public SolveurImpl(final GrilleImpl g) {
+        this.grille = g;
     }
 
     /**
      * constructeur par d�faut de la classe.
-     *
      */
     public SolveurImpl() {
     }
@@ -36,13 +38,18 @@ public class SolveurImpl implements ISolveur {
     /**
      * Mutateur de la propri�t� gille.
      *
-     * @param grille
+     * @param g GrilleImpl
      */
-    public void setGrille(GrilleImpl grille) {
-        this.grille = grille;
+    public final void setGrille(final GrilleImpl g) {
+        this.grille = g;
     }
 
-    public boolean verifierPuzzle() {
+    /**
+     * Vérifie si la grille à résoudre est valide.
+     *
+     * @return boolean
+     */
+    public final boolean verifierPuzzle() {
         char[][] plateau = grille.getSudoku().clone();
         int dim = grille.getDimension();
         for (int i = 0; i < dim; i++) {
@@ -65,14 +72,22 @@ public class SolveurImpl implements ISolveur {
         return true;
     }
 
-    public boolean resolu() {
+    /**
+     * Teste si la grille à résoudre a été résolue.
+     *
+     * @return boolean
+     */
+    public final boolean resolu() {
         if (!verifierPuzzle()) {
             throw new IllegalArgumentException("tab ne doit pas �tre nul.");
         }
         return resoudre();
     }
 
-    public boolean resoudre() {
+    /**
+     * Résoud la grille de Sudoku.
+     */
+    public final boolean resoudre() {
         int dim = grille.getDimension();
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
@@ -84,8 +99,7 @@ public class SolveurImpl implements ISolveur {
                             if (resoudre()) {
                                 return true;
                             }
-                        } catch (IllegalArgumentException ex) {
-                            
+                        } catch (IllegalArgumentException ex) { 
                         }
                     }
                     return false;
@@ -95,7 +109,10 @@ public class SolveurImpl implements ISolveur {
         return true;
     }
 
-    public void afficherSolution() {
+    /**
+     * Affiche la grille complète après résolution.
+     */
+    public final void afficherSolution() {
         try {
             if (resolu()) {
                 for (int i = 0; i < 9; ++i) {
@@ -106,9 +123,13 @@ public class SolveurImpl implements ISolveur {
                         if (j % 3 == 0) {
                             System.out.print("| ");
                         }
-                        System.out.print(grille.getSudoku()[i][j]
-                                == Grille.EMPTY ? " "
-                                        : grille.getSudoku()[i][j]);
+                        char caractere;
+                        if (grille.getSudoku()[i][j] == Grille.EMPTY) {
+                            caractere = ' ';
+                        } else {
+                            caractere = grille.getSudoku()[i][j];
+                        }
+                        System.out.print(caractere);
 
                         System.out.print(' ');
                     }
