@@ -4,28 +4,30 @@ package com.github.sudoku;
  *
  * @author AFK
  */
-public final class GrilleImpl implements Grille {
+public class GrilleImpl implements Grille {
 
     /**
      * sudoku une grille de sudoku 9x9.
-     * 
      */
     private char[][] sudoku;
 
-    public GrilleImpl(char[][] sudoku) {
-        this.sudoku = sudoku;
+    /**
+     * constructeur de la grille.
+     * @param plateau char[][]
+     */
+    public GrilleImpl(final char[][] plateau) {
+        this.sudoku = plateau;
     }
 
     /**
-     * constructeur par d�faut de la grille.
-     * 
+     * constructeur par défaut de la grille.
      */
     public GrilleImpl() {
 
     }
 
     @Override
-    public int getDimension() {
+    public final int getDimension() {
         return this.sudoku.length;
     }
 
@@ -34,7 +36,7 @@ public final class GrilleImpl implements Grille {
      *
      * @return char[][]
      */
-    public char[][] getSudoku() {
+    public final char[][] getSudoku() {
         return sudoku;
     }
 
@@ -43,12 +45,12 @@ public final class GrilleImpl implements Grille {
      *
      * @param sudoku1 char[][]
      */
-    public void setSudoku(final char[][] sudoku1) {
+    public final void setSudoku(final char[][] sudoku1) {
         this.sudoku = sudoku1;
     }
 
     @Override
-    public void setValue(final int x, final int y, final char value)
+    public final void setValue(final int x, final int y, final char value)
             throws IllegalArgumentException {
         if (possible(x, y, value)) {
             sudoku[x][y] = value;
@@ -59,7 +61,7 @@ public final class GrilleImpl implements Grille {
     }
 
     @Override
-    public char getValue(final int x, final int y)
+    public final char getValue(final int x, final int y)
             throws IllegalArgumentException {
         int dim = getDimension();
         horsBornes(x, y, dim);
@@ -67,7 +69,7 @@ public final class GrilleImpl implements Grille {
     }
 
     @Override
-    public boolean complete() {
+    public final boolean complete() {
         int dim = getDimension();
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
@@ -80,7 +82,7 @@ public final class GrilleImpl implements Grille {
     }
 
     @Override
-    public boolean possible(final int x, final int y, final char value)
+    public final boolean possible(final int x, final int y, final char value)
             throws IllegalArgumentException {
         int dim = getDimension();
         horsBornes(x, y, dim);
@@ -116,7 +118,7 @@ public final class GrilleImpl implements Grille {
      * @param value un caractère
      * @return int le nombre
      */
-    public int nombreOccurences(final char[] tableau, final char value) {
+    public final int nombreOccurences(final char[] tableau, final char value) {
         int nbOccurences = 0;
 
         for (char c : tableau) {
@@ -134,7 +136,7 @@ public final class GrilleImpl implements Grille {
      * @param value un caractère
      * @return true si le caractère est autorisé et false sinon
      */
-    private boolean contient(final int taille, final char value) {
+    private final boolean contient(final int taille, final char value) {
         for (int i = 0; i < taille; i++) {
             if (POSSIBLE[i] == value) {
                 return true;
@@ -151,7 +153,7 @@ public final class GrilleImpl implements Grille {
      * @param value un caractère
      * @return char[][] un carré de la grille
      */
-    public boolean testCarre(final int x, final int y, final char value) {
+    public final boolean testCarre(final int x, final int y, final char value) {
         //Taille d'un carre après découpage de la grille en carrés
         int dimCarre = (int) Math.sqrt(Double.valueOf(getDimension()));
         char[][] carre = new char[dimCarre][dimCarre];
@@ -181,7 +183,7 @@ public final class GrilleImpl implements Grille {
      * @throws IllegalArgumentException si x > dim
      * @throws IllegalArgumentException si y > dim
      */
-    public void horsBornes(final int x, final int y, final int dim)
+    public final void horsBornes(final int x, final int y, final int dim)
             throws IllegalArgumentException {
         if (x > dim || y > dim) {
             throw new IllegalArgumentException("x et y sont "
