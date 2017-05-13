@@ -2,7 +2,8 @@ package com.github.sudoku;
 
 /**
  *
- * @author AFK
+ * @author AFODOME, KAHANAM
+ *
  */
 public interface Grille {
 
