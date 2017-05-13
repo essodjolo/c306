@@ -43,11 +43,11 @@ public class SolveurImpl implements ISolveur {
     }
 
     public boolean verifierPuzzle() {
-        for (int i = 0; i < getGrille().getDimension(); i++) {
-            for (int j = 0; j < getGrille().getDimension(); i++) {
+        for (int i = 0; i < grille.getDimension(); i++) {
+            for (int j = 0; j < grille.getDimension(); i++) {
                 try {
-                    if (!getGrille().possible(i, j, 
-                            getGrille().getSudoku()[i][j])) {
+                    if (!getGrille().possible(i, j,
+                            grille.getSudoku()[i][j])) {
                         return false;
                     }
                 } catch (IllegalArgumentException e) {
@@ -58,10 +58,11 @@ public class SolveurImpl implements ISolveur {
         return true;
     }
 
-    public boolean resoudre(char[][] cells, int x, int y) throws Exception {
+    public boolean resoudre(char[][] cells, int x, int y)
+            throws IllegalArgumentException {
 
         if (!verifierPuzzle()) {
-            throw new IllegalArgumentException("tab ne doit pas �tre nul.");
+            throw new IllegalArgumentException("tab ne doit pas �tre nul.");
         }
 
         if (x == 9) {
@@ -91,23 +92,32 @@ public class SolveurImpl implements ISolveur {
     }
 
     public void afficherSolution() {
-        for (int i = 0; i < 9; ++i) {
-            if (i % 3 == 0) {
-                System.out.println(" -----------------------");
-            }
-            for (int j = 0; j < 9; ++j) {
-                if (j % 3 == 0) {
-                    System.out.print("| ");
-                }
-                System.out.print(getGrille().getSudoku()[i][j] == Grille.EMPTY
-                        ? " "
-                        : getGrille().getSudoku()[i][j]);
+        try {
+            if (resoudre(grille.getSudoku(), 0, 0)) {
+                for (int i = 0; i < 9; ++i) {
+                    if (i % 3 == 0) {
+                        System.out.println(" -----------------------");
+                    }
+                    for (int j = 0; j < 9; ++j) {
+                        if (j % 3 == 0) {
+                            System.out.print("| ");
+                        }
+                        System.out.print(grille.getSudoku()[i][j]
+                                == Grille.EMPTY ? " "
+                                        : grille.getSudoku()[i][j]);
 
-                System.out.print(' ');
+                        System.out.print(' ');
+                    }
+                    System.out.println("|");
+                }
+                System.out.println(" -----------------------");
+            } else {
+                System.out.println("Acune solution n'a pu être calculée.");
             }
-            System.out.println("|");
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Une erreur est survenue.");
         }
-        System.out.println(" -----------------------");
     }
 
 }
