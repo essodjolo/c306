@@ -43,15 +43,22 @@ public class SolveurImpl implements ISolveur {
     }
 
     public boolean verifierPuzzle() {
-        for (int i = 0; i < grille.getDimension(); i++) {
-            for (int j = 0; j < grille.getDimension(); i++) {
-                try {
-                    if (!getGrille().possible(i, j,
-                            grille.getSudoku()[i][j])) {
+        char[][] plateau = grille.getSudoku().clone();
+        int dim = grille.getDimension();
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                if (plateau[i][j] != Grille.EMPTY) {
+                    char tempo = plateau[i][j];
+                    plateau[i][j] = Grille.EMPTY;
+                    try {
+                        if (!grille.possible(i, j, tempo)) {
+                            System.out.println("(" + i + "," + j + ")");
+                            return false;
+                        }
+                    } catch (IllegalArgumentException e) {
                         return false;
                     }
-                } catch (IllegalArgumentException e) {
-                    return false;
+                    plateau[i][j] = tempo;
                 }
             }
         }

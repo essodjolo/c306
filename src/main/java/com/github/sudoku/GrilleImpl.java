@@ -17,7 +17,7 @@ public final class GrilleImpl implements Grille {
     }
 
     /**
-     * constructeur par défaut de la grille.
+     * constructeur par dï¿½faut de la grille.
      * 
      */
     public GrilleImpl() {
