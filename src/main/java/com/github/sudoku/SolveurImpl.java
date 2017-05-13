@@ -46,9 +46,11 @@ public class SolveurImpl implements ISolveur {
         for (int i = 0; i < getGrille().getDimension(); i++) {
             for (int j = 0; j < getGrille().getDimension(); i++) {
                 try {
-                    if (! getGrille().possible(i, j, getGrille().getSudoku()[i][j]))
+                    if (!getGrille().possible(i, j, 
+                            getGrille().getSudoku()[i][j])) {
                         return false;
-                } catch (Exception e) {
+                    }
+                } catch (IllegalArgumentException e) {
                     return false;
                 }
             }
@@ -90,13 +92,16 @@ public class SolveurImpl implements ISolveur {
 
     public void afficherSolution() {
         for (int i = 0; i < 9; ++i) {
-            if (i % 3 == 0)
+            if (i % 3 == 0) {
                 System.out.println(" -----------------------");
+            }
             for (int j = 0; j < 9; ++j) {
-                if (j % 3 == 0) System.out.print("| ");
+                if (j % 3 == 0) {
+                    System.out.print("| ");
+                }
                 System.out.print(getGrille().getSudoku()[i][j] == Grille.EMPTY
-                                 ? " "
-                                 : getGrille().getSudoku()[i][j]);
+                        ? " "
+                        : getGrille().getSudoku()[i][j]);
 
                 System.out.print(' ');
             }
