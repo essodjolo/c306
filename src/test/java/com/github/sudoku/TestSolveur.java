@@ -55,7 +55,7 @@ public final class TestSolveur {
     }
     
     /**
-     * Test de la méthode resolu() pour une grille non compl�te.
+     * Test de la méthode resolu() avec exception.
      */    
     @Test(expected = IllegalArgumentException.class)
     public void testNonResoluAvecException(){
