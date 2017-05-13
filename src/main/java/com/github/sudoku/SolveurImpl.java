@@ -64,47 +64,41 @@ public class SolveurImpl implements ISolveur {
         }
         return true;
     }
-    
-    public boolean resolu(){
-        return resoudre(grille.getSudoku(), 0, 0);
-    }
-    
-    public boolean resoudre(char[][] cells, int x, int y)
-            throws IllegalArgumentException {
 
+    public boolean resolu() {
         if (!verifierPuzzle()) {
             throw new IllegalArgumentException("tab ne doit pas �tre nul.");
         }
+        return resoudre();
+    }
 
-        if (x == 9) {
-            x = 0;
-            if (++y == 9) {
-                return true;
-            }
-        }
-
-        if (cells[x][y] != Grille.EMPTY) // skip filled cells
-        {
-            return resoudre(cells, x, y);
-        }
-
-        for (int i = 0; i < 9; ++i) {
-            char val = Grille.POSSIBLE[i];
-            if (grille.possible(x, y, val)) {
-
-                cells[x][y] = val;
-                if (resoudre(cells, x + 1, y)) {
-                    return true;
+    public boolean resoudre()
+            throws IllegalArgumentException {
+        int dim = grille.getDimension();
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                if (grille.getSudoku()[i][j] == GrilleImpl.EMPTY) {
+                    for (int k = 0; k < 8; k++) {
+                        char val = Grille.POSSIBLE[k];
+                        try {
+                            grille.setValue(i, j, val);
+                            if (resoudre()) {
+                                return true;
+                            }
+                        } catch (IllegalArgumentException ex) {
+                            System.out.println(val + " : " + ex.getMessage());
+                        }
+                    }
+                    return false;
                 }
             }
         }
-        cells[x][y] = Grille.EMPTY; // reset on backtrack
-        return false;
+        return true;
     }
 
     public void afficherSolution() {
         try {
-            if (resoudre(grille.getSudoku(), 0, 0)) {
+            if (resolu()) {
                 for (int i = 0; i < 9; ++i) {
                     if (i % 3 == 0) {
                         System.out.println(" -----------------------");

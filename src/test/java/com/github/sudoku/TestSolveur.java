@@ -53,6 +53,11 @@ public final class TestSolveur {
         SolveurImpl solveur = new SolveurImpl(new GrilleImpl(sudokuComplete));
         
     }*/
+    @Test
+    public void testResolu(){
+        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(sudokuNonComplete));
+        assertTrue(solveur.resolu());
+    }
 
     /**
      * Test de la méthode verifierPuzzle().
