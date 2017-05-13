@@ -19,8 +19,7 @@ public interface ISolveur {
      * valable ou si aucune solution n'a pu être calculée
      * @return une grille bien remplie
      */
-    public boolean resoudre() 
-            throws IllegalArgumentException;
+    public boolean resoudre();
 
     /**
      * Affiche la solution trouvé au puzzle.

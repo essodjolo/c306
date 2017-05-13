@@ -72,8 +72,7 @@ public class SolveurImpl implements ISolveur {
         return resoudre();
     }
 
-    public boolean resoudre()
-            throws IllegalArgumentException {
+    public boolean resoudre() {
         int dim = grille.getDimension();
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
