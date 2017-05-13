@@ -25,7 +25,17 @@ public final class TestGrille {
      */
     @BeforeClass
     public static void initialize() {
-        grille = new GrilleImpl();
+        final char[][] sudoku
+                = {{'@', '3', '@', '6', '7', '@', '9', '@', '2'},
+                {'6', '7', '2', '1', '9', '5', '3', '4', '8'},
+                {'1', '9', '@', '@', '@', '@', '5', '6', '7'},
+                {'@', '5', '@', '7', '6', '1', '@', '2', '3'},
+                {'@', '2', '6', '@', '@', '@', '7', '9', '@'},
+                {'@', '1', '3', '9', '@', '4', '8', '5', '6'},
+                {'@', '6', '@', '5', '3', '@', '@', '8', '@'},
+                {'2', '8', '7', '@', '1', '9', '@', '3', '5'},
+                {'3', '4', '5', '2', '8', '6', '1', '7', '9'}};
+        grille = new GrilleImpl(sudoku);
     }
 
     /**
@@ -111,9 +121,7 @@ public final class TestGrille {
                 {'9', '6', '1', '5', '3', '7', '2', '8', '4'},
                 {'2', '8', '7', '4', '1', '9', '6', '3', '5'},
                 {'3', '4', '5', '2', '8', '6', '1', '7', '9'}};
-
-        GrilleImpl gi = new GrilleImpl();
-        gi.setSudoku(completeSudoku);
+        GrilleImpl gi = new GrilleImpl(completeSudoku);
         assertTrue(gi.complete());
     }
 
@@ -132,43 +140,8 @@ public final class TestGrille {
                 {'9', '6', '1', '5', '3', '7', '2', '8', '4'},
                 {'2', '8', '7', '4', '1', '9', '6', '3', '5'},
                 {'3', '4', '5', '2', '8', '6', '1', '7', '9'}};
-
-        GrilleImpl gi = new GrilleImpl();
-        gi.setSudoku(completeSudoku);
+        GrilleImpl gi = new GrilleImpl(completeSudoku);
         assertFalse(gi.complete());
-    }
-
-    /**
-     * Test de la méthode possible().
-     *
-     */
-    public void testPossible() {
-        char value = '8';
-        final int x = 3;
-        final int y = 0;
-        assertTrue(grille.possible(x, y, value));
-    }
-
-    /**
-     * Test de la méthode possible(). avec une valeur non autorisée sur une
-     * ligne
-     */
-    public void testNonPossibleLigne() {
-        char value = '6';
-        final int x = 0;
-        final int y = 0;
-        assertFalse(grille.possible(x, y, value));
-    }
-
-    /**
-     * Test de la méthode possible(). avec une valeur non autorisée sur une
-     * colonne
-     */
-    public void testNonPossibleColonne() {
-        char value = '8';
-        final int x = 0;
-        final int y = 0;
-        assertFalse(grille.possible(x, y, value));
     }
 
     /**
@@ -181,16 +154,4 @@ public final class TestGrille {
         final int y = 20;
         grille.horsBornes(x, y, dim);
     }
-
-    /**
-     * Test de la méthode possible().
-     *
-     */
-    public void testHorsBornes() {
-        final int dim = 9;
-        final int x = 0;
-        final int y = 0;
-        grille.horsBornes(x, y, dim);
-    }
-
 }
