@@ -64,7 +64,11 @@ public class SolveurImpl implements ISolveur {
         }
         return true;
     }
-
+    
+    public boolean resolu(){
+        return resoudre(grille.getSudoku(), 0, 0);
+    }
+    
     public boolean resoudre(char[][] cells, int x, int y)
             throws IllegalArgumentException {
 
