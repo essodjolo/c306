@@ -4,7 +4,7 @@ package com.github.sudoku;
  *
  * @author Essodjolo KAHANAM & AFODOME K.
  */
-public class SolveurImpl implements ISolveur {
+public final class SolveurImpl implements ISolveur {
 
     /**
      * Une grille de Sudoku.
@@ -40,7 +40,7 @@ public class SolveurImpl implements ISolveur {
      *
      * @param g GrilleImpl
      */
-    public final void setGrille(final GrilleImpl g) {
+    public void setGrille(final GrilleImpl g) {
         this.grille = g;
     }
 
@@ -49,7 +49,7 @@ public class SolveurImpl implements ISolveur {
      *
      * @return boolean
      */
-    public final boolean verifierPuzzle() {
+    public boolean verifierPuzzle() {
         char[][] plateau = grille.getSudoku().clone();
         int dim = grille.getDimension();
         for (int i = 0; i < dim; i++) {
@@ -76,7 +76,7 @@ public class SolveurImpl implements ISolveur {
      *
      * @return boolean
      */
-    public final boolean resolu() {
+    public boolean resolu() {
         if (!verifierPuzzle()) {
             throw new IllegalArgumentException("tab ne doit pas �tre nul.");
         }
@@ -85,20 +85,22 @@ public class SolveurImpl implements ISolveur {
 
     /**
      * Résoud la grille de Sudoku.
+     *
+     * @return boolean
      */
-    public final boolean resoudre() {
+    public boolean resoudre() {
         int dim = grille.getDimension();
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 if (grille.getSudoku()[i][j] == GrilleImpl.EMPTY) {
-                    for (int k = 0; k < 8; k++) {
+                    for (int k = 0; k < dim; k++) {
                         char val = Grille.POSSIBLE[k];
                         try {
                             grille.setValue(i, j, val);
                             if (resoudre()) {
                                 return true;
                             }
-                        } catch (IllegalArgumentException ex) { 
+                        } catch (IllegalArgumentException ex) {
                         }
                     }
                     return false;
@@ -111,15 +113,17 @@ public class SolveurImpl implements ISolveur {
     /**
      * Affiche la grille complète après résolution.
      */
-    public final void afficherSolution() {
+    public void afficherSolution() {
+        int dim = grille.getDimension();
+        int nbPart = 3;
         try {
             if (resolu()) {
-                for (int i = 0; i < 9; ++i) {
-                    if (i % 3 == 0) {
+                for (int i = 0; i < dim; ++i) {
+                    if (i % nbPart == 0) {
                         System.out.println(" -----------------------");
                     }
-                    for (int j = 0; j < 9; ++j) {
-                        if (j % 3 == 0) {
+                    for (int j = 0; j < dim; ++j) {
+                        if (j % nbPart == 0) {
                             System.out.print("| ");
                         }
                         char caractere;
