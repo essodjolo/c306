@@ -78,7 +78,7 @@ public final class SolveurImpl implements ISolveur {
      */
     public boolean resolu() {
         if (!verifierPuzzle()) {
-            throw new IllegalArgumentException("tab ne doit pas �tre nul.");
+            throw new IllegalArgumentException("tab ne doit pas être nul.");
         }
         return resoudre();
     }
