@@ -126,14 +126,7 @@ public final class SolveurImpl implements ISolveur {
                         if (j % nbPart == 0) {
                             System.out.print("| ");
                         }
-                        char caractere;
-                        if (grille.getSudoku()[i][j] == Grille.EMPTY) {
-                            caractere = ' ';
-                        } else {
-                            caractere = grille.getSudoku()[i][j];
-                        }
-                        System.out.print(caractere);
-
+                        System.out.print(grille.getSudoku()[i][j]);
                         System.out.print(' ');
                     }
                     System.out.println("|");

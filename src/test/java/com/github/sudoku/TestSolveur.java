@@ -54,6 +54,16 @@ public final class TestSolveur {
             {'9', '6', '1', '5', '3', '7', '2', '8', '4', '1'},
             {'2', '8', '7', '4', '1', '9', '6', '3', '5', '2'},
             {'3', '4', '5', '2', '8', '6', '1', '7', '9', '9'}};
+    private static final char[][] sudokuIncorrect3
+            = {{'X', 'T', '4', '6', '7', '8', '9', '1', '2'},
+            {'X', '7', '@', '1', '9', '5', '3', '4', '8'},
+            {'1', '9', '8', '3', '@', '2', '5', '6', '7'},
+            {'8', '5', '9', '7', '6', '1', '4', '2', '3'},
+            {'4', '2', '@', '8', '5', '3', '7', '9', '1'},
+            {'7', '1', '3', '9', '2', '4', '@', '5', '6'},
+            {'9', '6', '1', '5', '@', '7', '2', '8', '4'},
+            {'@', '8', '7', '4', '1', '9', '6', '@', '5'},
+            {'3', '4', '5', '2', 't', '6', '1', '7', '9'}};
 
     /**
      * Test de la méthode resolu() pour une grille non compl�te.
@@ -84,6 +94,15 @@ public final class TestSolveur {
         SolveurImpl solveur2 = 
                 new SolveurImpl(new GrilleImpl(sudokuNonComplete));
         assertTrue(solveur2.verifierPuzzle());
+    }
+    /**
+     * Test de la méthode verifierPuzzle() avec exception.
+     */
+    @Test
+    public void testverifierPuzzleAvecException() {
+        SolveurImpl solveur = 
+                new SolveurImpl(new GrilleImpl(sudokuIncorrect3));
+        assertFalse(solveur.verifierPuzzle());
     }
 
     /**
