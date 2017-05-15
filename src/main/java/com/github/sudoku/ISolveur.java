@@ -23,7 +23,7 @@ public interface ISolveur {
     boolean resoudre();
 
     /**
-     * Affiche la solution trouvé au puzzle.
+     * Affiche la solution trouvée au puzzle.
      */
     void afficherSolution();
 
