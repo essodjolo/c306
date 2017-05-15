@@ -84,10 +84,6 @@ public final class TestSolveur {
         SolveurImpl solveur2 = 
                 new SolveurImpl(new GrilleImpl(sudokuNonComplete));
         assertTrue(solveur2.verifierPuzzle());
-        //cas de grille correcte
-        SolveurImpl solveur3 = 
-                new SolveurImpl(new GrilleImpl(sudokuIncorrect2));
-        assertTrue(solveur3.verifierPuzzle());
     }
 
     /**
