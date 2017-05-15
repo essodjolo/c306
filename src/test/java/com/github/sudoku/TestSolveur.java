@@ -52,7 +52,7 @@ public final class TestSolveur {
             {'3', '4', '5', '2', 't', '6', '1', '7', '9'}};
 
     /**
-     * Test de la méthode resolu() pour une grille non compl�te.
+     * Test de la méthode resolu() pour une grille non complète.
      */    
     @Test
     public void testResolu(){

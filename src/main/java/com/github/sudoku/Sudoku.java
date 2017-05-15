@@ -12,7 +12,7 @@ package com.github.sudoku;
 public final class Sudoku {
 
     /**
-     * constructeur par d�faut de la classe.
+     * constructeur par défaut de la classe.
      */
     private Sudoku() {
     }

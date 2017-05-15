@@ -21,13 +21,13 @@ public final class SolveurImpl implements ISolveur {
     }
 
     /**
-     * constructeur par d�faut de la classe.
+     * constructeur par défaut de la classe.
      */
     public SolveurImpl() {
     }
 
     /**
-     * Accesseur de la propri�t� grille SolveurImpl.
+     * Accesseur de la propriété grille SolveurImpl.
      *
      * @return GrilleImpl
      */
@@ -36,7 +36,7 @@ public final class SolveurImpl implements ISolveur {
     }
 
     /**
-     * Mutateur de la propri�t� gille.
+     * Mutateur de la propriété gille.
      *
      * @param g GrilleImpl
      */
