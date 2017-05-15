@@ -122,4 +122,24 @@ public final class TestSolveur {
         solveur3.afficherSolution();
     }
 
+    /**
+     * Test de la méthode setGrille().
+     *
+     */
+    @Test
+    public void testSetGrille() {
+        SolveurImpl solveur = new SolveurImpl();
+        solveur.setGrille(new GrilleImpl(sudokuNonComplete));
+    }
+
+    /**
+     * Test de la méthode getGrille().
+     *
+     */
+    @Test
+    public void testGetGrille() {
+        SolveurImpl solveur = new SolveurImpl(new GrilleImpl(sudokuNonComplete));
+        GrilleImpl g = solveur.getGrille();
+    }
+
 }
