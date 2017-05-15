@@ -136,13 +136,13 @@ public class GrilleImpl implements Grille {
      * @param value un caractère
      * @return true si le caractère est autorisé et false sinon
      */
-    private final boolean contient(final int taille, final char value) {
+    private boolean contient(final int taille, final char value) {
         for (int i = 0; i < taille; i++) {
             if (POSSIBLE[i] == value) {
                 return true;
             }
         }
-        
+
         return value == EMPTY;
     }
 
