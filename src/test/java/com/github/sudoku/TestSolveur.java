@@ -82,6 +82,7 @@ public final class TestSolveur {
                 new SolveurImpl(new GrilleImpl(SUDOKU_NON_COMPLET));
         assertTrue(solveur2.verifierPuzzle());
     }
+
     /**
      * Test de la méthode verifierPuzzle() avec exception.
      */
